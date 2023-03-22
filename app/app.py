@@ -7,6 +7,6 @@ app = Flask(__name__)
 def hello_world():
     return render_template('index.html')
 
-@app.route('/calendar/')
+@app.route('/calendar')
 def hello():
-    return 'calendar'
+    return render_template('calendar.html')
