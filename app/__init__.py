@@ -1,5 +1,5 @@
 import os
-
+import sqlite3
 from flask import Flask, render_template
 
 
@@ -32,7 +32,13 @@ def create_app(test_config=None):
     # Routing calendar
     @app.route('/calendar')
     def hello():
-        return render_template('calendar.html')
+        conn = sqlite3.connect('instance/database.sqlite')
+        cursor = conn.cursor()
+
+        # Récupération de tous les événements
+        cursor.execute('SELECT * FROM event')
+        events = cursor.fetchall()
+        return render_template('calendar.html', events=events)
 
     @app.errorhandler(404)
     def page_not_found(error):

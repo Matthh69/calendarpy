@@ -1,3 +1,2 @@
-app/__pycache__/__init__.cpython-311.pyc
-app/__pycache__/app.cpython-311.pyc
-/instance/*
+app/__pycache__/*
+instance/database.sqlite
