@@ -5,17 +5,19 @@
 */
 
 --Table to store calendar
+DROP TABLE IF EXISTS calendar;
 CREATE TABLE calendar (
-    id INTEGER PRIMARY KEY,
+    cal_id INTEGER PRIMARY KEY AUTOINCREMENT
     --link TEXT // Will use id instead
 );
 
 --Table to store event (messages posted by users)
+DROP TABLE IF EXISTS event;
 CREATE TABLE event (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     event_date DATETIME, --Format ('YYYY-MM-DD hh:mm:ss')
     txt_content TEXT,
-    id_cal INTEGER REFERENCES calendar (id));
+    id_cal INTEGER REFERENCES calendar (cal_id));
 
 --Creation of dummy content
 
