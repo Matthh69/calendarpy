@@ -30,6 +30,7 @@ INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-10 11:24:55
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-10 15:54:06', 'Maths en L697', 1);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-14 08:11:25', 'Histoire géo en L265', 1);
 
+--Messages second calendrtier
 
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-10 11:24:55', 'Premier message', 2);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-10 15:54:06', 'Maths en L697', 2);
