@@ -18,6 +18,21 @@
                 <li>Jour 4</li>
                 <li>Jour 5</li>
             </ul>
+            <ul>
+                <p>
+
+                    {% block content %}
+                        <h1>Calendrier des événements</h1>
+                        <ul>
+                        {% for event in events %}
+                            <li>{{ event[1] }} - {{ event[2] }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endblock %}</p>
+
+    
+            </ul>
+
         </nav>
 
     </div>
