@@ -27,6 +27,7 @@ def init_db():
         db.executescript(f.read().decode('utf8'))
 
 @click.command('init_db')
+@with_appcontext
 def initdb_command():
     """Clear the existing data and create new tables."""
     init_db()
