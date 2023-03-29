@@ -1,3 +1,4 @@
+
 import sqlite3
 import os
 from flask import g
@@ -6,6 +7,9 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 # fonction pour accéder à la base de données
+
+#how to code edit the get_events function ?
+
 
 
 def get_events():
@@ -20,7 +24,7 @@ def get_events():
 # Routing index
 
 
-@app.route("/")
+@app.route("/login")
 def hello_world():
     return render_template('index.html')
 
