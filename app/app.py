@@ -3,10 +3,11 @@ from flask import g
 from flask import Flask, render_template
 
 app = Flask(__name__)
+#app.config.from_object(__name__)
+
+#app.config.from_pyfile('./config/settings.cfg')
 
 # Routing index
-
-
 @app.route("/")
 def hello_world():
     return render_template('index.html')
