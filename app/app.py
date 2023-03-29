@@ -5,6 +5,9 @@ from flask import g
 from flask import Flask, render_template
 
 app = Flask(__name__)
+#app.config.from_object(__name__)
+
+#app.config.from_pyfile('./config/settings.cfg')
 
 # fonction pour accéder à la base de données
 
@@ -22,9 +25,7 @@ def get_events():
 
 
 # Routing index
-
-
-@app.route("/login")
+@app.route("/")
 def hello_world():
     return render_template('index.html')
 
