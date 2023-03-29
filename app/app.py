@@ -1,3 +1,4 @@
+
 import sqlite3
 import os
 from flask import g
@@ -9,6 +10,9 @@ app = Flask(__name__)
 #app.config.from_pyfile('./config/settings.cfg')
 
 # fonction pour accéder à la base de données
+
+#how to code edit the get_events function ?
+
 
 
 def get_events():
