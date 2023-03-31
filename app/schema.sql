@@ -28,10 +28,16 @@ INSERT INTO calendar VALUES (2);
 --Messages
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-10 11:24:55', 'Premier message', 1);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-10 15:54:06', 'Maths en L697', 1);
-INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-14 08:11:25', 'Histoire géo en L265', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-11 14:31:44', 'Histoire géo en L265', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-14 08:11:25', 'En distanciel parce que grève', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-14 19:00:52', 'Pour demain il faut faire ça', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-15 09:26:18', 'Y a steak frites à la cantine', 1);
 
 --Messages second calendrier
 
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-10 11:24:55', 'Premier message', 2);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-10 15:54:06', 'Maths en L697', 2);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-14 08:11:25', 'Histoire géo en L265', 2);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-11 14:31:44', 'Histoire géo en L265', 2);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-14 19:00:52', 'Pour demain il faut faire ça', 2);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-15 09:26:18', 'Y a steak frites à la cantine', 2);
