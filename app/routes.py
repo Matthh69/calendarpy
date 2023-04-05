@@ -17,7 +17,7 @@ def calendar(id):
     cursor = conn.cursor()
 
     # Récupération de tous les événements
-    cursor.execute('SELECT * FROM event WHERE id_cal = ?', (id,))
+    cursor.execute('SELECT * FROM event WHERE id_cal = ? ORDER BY event_date ASC', (id,))
     events = cursor.fetchall()
     return render_template('calendar.html', events=events)
 
