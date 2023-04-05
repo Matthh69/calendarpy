@@ -30,13 +30,13 @@ def create_app(test_config=None):
         return render_template('index.html')
 
     # Routing calendar
-    @app.route('/calendar')
-    def hello():
+    @app.route('/calendar/<int:id>')
+    def calendar(id):
         conn = sqlite3.connect('instance/database.sqlite')
         cursor = conn.cursor()
 
         # Récupération de tous les événements
-        cursor.execute('SELECT * FROM event')
+        cursor.execute('SELECT * FROM event WHERE id_cal = id')
         events = cursor.fetchall()
         return render_template('calendar.html', events=events)
 
