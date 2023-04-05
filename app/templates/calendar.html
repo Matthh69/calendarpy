@@ -10,31 +10,75 @@
 
         <h1>Calendrier</h1>
 
-        <nav>
-            <ul>
-                <li>Jour 1</li>
-                <li>Jour 2</li>
-                <li>Jour 3</li>
-                <li>Jour 4</li>
-                <li>Jour 5</li>
-            </ul>
+        <div id="day1">
             <ul>
                 <p>
 
-                    {% block content %}
-                        <h1>Calendrier des événements</h1>
+                    {% block content_d1 %}
                         <ul>
                         {% for event in events %}
                             <li>{{ event[1] }} - {{ event[2] }}</li>
                         {% endfor %}
                         </ul>
                     {% endblock %}</p>
-
-    
             </ul>
+        </div>
 
-        </nav>
+        <div id="day2">
+            <ul>
+                <p>
 
+                    {% block content_d2 %}
+                        <ul>
+                        {% for event in events %}
+                            <li>{{ event[1] }} - {{ event[2] }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endblock %}</p>
+            </ul>
+        </div>
+
+        <div id="day3">
+            <ul>
+                <p>
+
+                    {% block content_d3 %}
+                        <ul>
+                        {% for event in events %}
+                            <li>{{ event[1] }} - {{ event[2] }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endblock %}</p>
+            </ul>
+        </div>
+
+        <div id="day4">
+            <ul>
+                <p>
+
+                    {% block content_d4 %}
+                        <ul>
+                        {% for event in events %}
+                            <li>{{ event[1] }} - {{ event[2] }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endblock %}</p>
+            </ul>
+        </div>
+
+        <div id="day5">
+            <ul>
+                <p>
+
+                    {% block content_d5 %}
+                        <ul>
+                        {% for event in events %}
+                            <li>{{ event[1] }} - {{ event[2] }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endblock %}</p>
+            </ul>
+        </div>
     </div>
 
 </body>

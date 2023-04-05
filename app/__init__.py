@@ -24,25 +24,8 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # Routing index
-    @app.route("/")
-    def hello_world():
-        return render_template('index.html')
-
-    # Routing calendar
-    @app.route('/calendar/<int:id>')
-    def calendar(id):
-        conn = sqlite3.connect('instance/database.sqlite')
-        cursor = conn.cursor()
-
-        # Récupération de tous les événements
-        cursor.execute('SELECT * FROM event WHERE id_cal = id')
-        events = cursor.fetchall()
-        return render_template('calendar.html', events=events)
-
-    @app.errorhandler(404)
-    def page_not_found(error):
-        return render_template('page_not_found.html'), 404
+    from .routes import bp as routes_bp
+    app.register_blueprint(routes_bp)
 
     """
         DATABASE
