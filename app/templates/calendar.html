@@ -11,22 +11,21 @@
     <div>
            
         <div class="semaine">
-             
             {% for jour in ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] %}
-              <div class="jour">
-                <div class="titre_jour">{{ jour }}</div>
-                <div class="contenu_jour">
-                    <ul>
-                        {% for event in events %}
-                            <li>{{ event[1] }} - {{ event[2] }}</li>
-                        {% endfor %}
+                <div class="jour">
+                    <div class="titre_jour">{{ jour }}</div>
+                    <div class="contenu_jour">
+                        <ul>
+                            {% for event in events %}
+                                <li>{{ event[1] }} - {{ event[2] }}</li>
+                            {% endfor %}
                         </ul>
-                    
-                    <input  type="text" class="inputAddTask">
+                        <input type="text" class="inputAddTask" id="{{ 'input' ~ jour }}">
+                    </div>
                 </div>
-            </div>
             {% endfor %} 
-         </div>
+        </div>
+        
     </div>
 
 </body>

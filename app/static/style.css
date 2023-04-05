@@ -9,7 +9,8 @@
 .semaine {
   display: flex;
   border: 2px solid black;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 
 .jour {
@@ -20,9 +21,9 @@
 }
 
 .contenu_jour {
-  padding: 20px;
+  padding: 10px;
   border: 1px solid red;
-  height: 80%;
+  height: 85%;
 }
 
 .titre_jour {
