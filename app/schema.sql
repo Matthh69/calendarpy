@@ -41,3 +41,4 @@ INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-14 08:11:25
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-11 14:31:44', 'Histoire géo en L265', 2);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-14 19:00:52', 'Pour demain il faut faire ça', 2);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-10-15 09:26:18', 'Y a steak frites à la cantine', 2);
+
