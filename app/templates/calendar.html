@@ -7,79 +7,26 @@
 </head>
 <body>
 
+    <h1>Calendrier</h1>
     <div>
-
-        <h1>Calendrier</h1>
-
-        <div id="day1" class="day">
-            <ul>
-                <p>
-
-                    {% block content_d1 %}
-                        <ul>
+           
+        <div class="semaine">
+             
+            {% for jour in ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] %}
+              <div class="jour">
+                <div class="titre_jour">{{ jour }}</div>
+                <div class="contenu_jour">
+                    <ul>
                         {% for event in events %}
                             <li>{{ event[1] }} - {{ event[2] }}</li>
                         {% endfor %}
                         </ul>
-                    {% endblock %}</p>
-            </ul>
-        </div>
-
-        <div id="day2" class="day">
-            <ul>
-                <p>
-
-                    {% block content_d2 %}
-                        <ul>
-                        {% for event in events %}
-                            <li>{{ event[1] }} - {{ event[2] }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endblock %}</p>
-            </ul>
-        </div>
-
-        <div id="day3" class="day">
-            <ul>
-                <p>
-
-                    {% block content_d3 %}
-                        <ul>
-                        {% for event in events %}
-                            <li>{{ event[1] }} - {{ event[2] }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endblock %}</p>
-            </ul>
-        </div>
-
-        <div id="day4" class="day">
-            <ul>
-                <p>
-
-                    {% block content_d4 %}
-                        <ul>
-                        {% for event in events %}
-                            <li>{{ event[1] }} - {{ event[2] }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endblock %}</p>
-            </ul>
-        </div>
-
-        <div id="day5" class="day">
-            <ul>
-                <p>
-
-                    {% block content_d5 %}
-                        <ul>
-                        {% for event in events %}
-                            <li>{{ event[1] }} - {{ event[2] }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endblock %}</p>
-            </ul>
-        </div>
+                    
+                    <input  type="text" class="inputAddTask">
+                </div>
+            </div>
+            {% endfor %} 
+         </div>
     </div>
 
 </body>
