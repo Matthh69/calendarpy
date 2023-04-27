@@ -6,27 +6,43 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  
+    <div class="button-container">
+        <a href="{{ url_for('routes.previous_week', date=calendar[0]['date']) }}">Semaine précédente</a>
+        <h1>Calendrier</h1>
+        <a href="{{ url_for('routes.next_week', date=calendar[0]['date']) }}">Semaine Suivante </a>
+      </div>
 
-    <h1>Calendrier</h1>
-    <div>
+      
+  
+      
+
+    
            
         <div class="semaine">
-            {% for jour in ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] %}
-                <div class="jour">
-                    <div class="titre_jour">{{ jour }}</div>
+            {% for item in calendar %}
+                <div id="jour" class="jour">
+                    <div class="titre_jour">{{ item['day'] }}  {{ item['date'] }}</div>
                     <div class="contenu_jour">
                         <ul>
                             {% for event in events %}
-                                <li>{{ event[1] }} - {{ event[2] }}</li>
+                                {% if event[1].split()[0] == item['date'].strftime('%Y-%m-%d') %}
+                                    <li>{{ event[2] }}</li>
+        
+                                {% endif %}
                             {% endfor %}
                         </ul>
-                        <input type="text" class="inputAddTask" id="{{ 'input' ~ jour }}">
+                        <form method="POST" action="/add_task">
+                            <input type="text" class="inputAddTask" id="input" name="task">
+                            <input type="hidden" name="data-date" value="{{ item['date'] }}">
+                            <button type="submit">Ajouter une tâche</button>
+                        </form>
                     </div>
                 </div>
             {% endfor %} 
         </div>
         
-    </div>
+    
 
 </body>
 </html>

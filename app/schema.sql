@@ -32,6 +32,12 @@ INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-11 14:31:44
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-14 08:11:25', 'En distanciel parce que grève', 1);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-14 19:00:52', 'Pour demain il faut faire ça', 1);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2022-10-15 09:26:18', 'Y a steak frites à la cantine', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-04-24 11:24:55', 'Premier message', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-04-25 15:54:06', 'Maths en L697', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-04-25 14:31:44', 'Histoire géo en L265', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-04-26 08:11:25', 'En distanciel parce que grève', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-04-27 09:00:52', 'Pour demain il faut faire ça', 1);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-04-28 19:26:18', 'Y a steak frites à la cantine', 1);
 
 --Messages second calendrier
 
