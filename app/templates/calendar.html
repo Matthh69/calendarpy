@@ -33,9 +33,9 @@
                             {% endfor %}
                         </ul>
                         <form method="POST" action="/add_task">
-                            <input type="text" class="inputAddTask" id="input" name="task">
+                            <input type="text" class="inputAddTask" id="input" name="task" required>
                             <input type="hidden" name="data-date" value="{{ item['date'] }}">
-                            <button type="submit">Ajouter une tâche</button>
+                            <button class="addClasse" type="submit">Ajouter une tâche</button>
                         </form>
                     </div>
                 </div>
@@ -43,6 +43,24 @@
         </div>
         
     
-
+        <script>
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                    
+                }
+                return color;
+            }
+    
+            
+        
+            var lis = document.getElementsByTagName('li');
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].style.backgroundColor = getRandomColor();
+            }
+        </script>
+        
 </body>
 </html>

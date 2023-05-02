@@ -50,7 +50,7 @@ def get_calendar_and_events(date):
 @bp.route('/calendar/<int:id>/')
 @bp.route('/calendar/')
 def calendar(id=None):
-    # Récupération de la date passée en paramètre ou de la date actuelle
+    # Récupération de la date passée en paramètre de l'url de la date actuelle
     date_str = request.args.get('date')
     if date_str is not None:
         date = datetime.strptime(date_str, '%Y-%m-%d')
