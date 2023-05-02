@@ -55,6 +55,7 @@ def calendar(id=None):
     if date_str is not None:
         date = datetime.strptime(date_str, '%Y-%m-%d')
     else:
+        # si l'url n'a pas de parametre de date, on affiche la semaine actuelle
         date = datetime.now()
 
     # Récupération du calendrier et des événements associés à la date
@@ -102,6 +103,7 @@ def next_week():
     return render_template('calendar.html', events=events, calendar=calendar)
 
 
+'''
 @bp.route('/add_task', methods=['POST'])
 def add_task():
     task = request.form['task']
@@ -117,3 +119,26 @@ def add_task():
     conn.commit()
     conn.close()
     return render_template('adddata.html', task=task, date=event_date)
+'''
+
+
+@bp.route('/add_task', methods=['POST'])
+def add_task():
+    task = request.form['task']
+    date_str = request.form['data-date']
+    date = datetime.strptime(date_str, '%Y-%m-%d')
+    event_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    event_date = datetime.combine(date, datetime.strptime(
+        event_date, '%Y-%m-%d %H:%M:%S').time())
+    conn = sqlite3.connect('instance/database.sqlite')
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO event (event_date, txt_content, id_cal) VALUES (?, ?, ?)", (event_date, task, 1))
+    conn.commit()
+    conn.close()
+
+    # Calcul de la date du lundi de la semaine correspondant à la date du champ caché
+
+    # Afficher la page du calendrier de la semaine correspondant à la date du champ caché
+    calendar, events, date = get_calendar_and_events(date)
+    return render_template('calendar.html', events=events, calendar=calendar, date=date)
