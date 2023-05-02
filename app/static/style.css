@@ -58,7 +58,7 @@
 .jour {
   border: 1px solid blue;
   margin: 5px;
-  padding: 5px;
+
   flex: 1;
 }
 
@@ -90,19 +90,7 @@ form {
   margin-top: 20px;
 }
 
-input[type="text"] {
-  width: 85%;
-  height: 30px;
-  padding: 5px;
-  font-size: 14px;
-  color: #333;
-  background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-input[type="text"]:focus {
+.newEventForm input[type="text"]:focus {
   outline: none;
 }
 
@@ -110,7 +98,7 @@ input[type="hidden"] {
   display: none;
 }
 
-button[type="submit"] {
+.newEventForm button[type="submit"] {
   width: 90%;
   height: 40px;
   font-size: 10px;
@@ -126,4 +114,33 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #333;
+}
+
+.newEventForm input[type="text"] {
+  width: 85%;
+  height: 30px;
+  padding: 5px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.eventContent {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ffffff;
+  border: none;
+  opacity: 80%;
+  border-radius: 10px;
+  padding: 10px;
+  resize: vertical;
+  overflow: auto;
+  height: 100%;
+  min-height: 50px;
+  outline: none; /* enlève les petits traits noirs */
+  scrollbar-width: thin; /* spécifie la largeur de la scrollbar */
+  scrollbar-color: #888888 #ffffff; /* spécifie la couleur de la scrollbar */
 }

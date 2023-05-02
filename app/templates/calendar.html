@@ -21,18 +21,33 @@
            
         <div class="semaine">
             {% for item in calendar %}
+
                 <div id="jour" class="jour">
                     <div class="titre_jour">{{ item['day'] }}  {{ item['date'] }}</div>
                     <div class="contenu_jour">
                         <ul>
                             {% for event in events %}
+                           
                                 {% if event[1].split()[0] == item['date'].strftime('%Y-%m-%d') %}
-                                    <li>{{ event[2] }}</li>
-        
+                                
+                                
+                      
+
+                                <form class="editEventForm" method="POST" action="/update_event">
+                                    <textarea type="text" class="eventContent" name="content" value="{{ event[2] }}"  >{{ event[2] }}</textarea>
+                                    <input type="hidden" name="event_id" value="{{ event[0] }}">
+                                    <input type="hidden" name="data-date" value="{{ item['date'] }}">
+                                    <button type="submit" class="updateButton" style="display:none;">Enregistrer</button>
+                                </form>
+                                
+                                
+
+                                  
+                                
                                 {% endif %}
                             {% endfor %}
                         </ul>
-                        <form method="POST" action="/add_task">
+                        <form method="POST" class="newEventForm" action="/add_task">
                             <input type="text" class="inputAddTask" id="input" name="task" required>
                             <input type="hidden" name="data-date" value="{{ item['date'] }}">
                             <button class="addClasse" type="submit">Ajouter une tâche</button>
@@ -44,6 +59,7 @@
         
     
         <script>
+            var lis = document.querySelectorAll(".eventContent");
             function getRandomColor() {
                 var letters = '0123456789ABCDEF';
                 var color = '#';
@@ -54,12 +70,30 @@
                 return color;
             }
     
-            
-        
-            var lis = document.getElementsByTagName('li');
             for (var i = 0; i < lis.length; i++) {
                 lis[i].style.backgroundColor = getRandomColor();
             }
+
+
+            var textareas = document.querySelectorAll('.eventContent');
+
+            textareas.forEach(function(textarea) {
+            textarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+
+            textarea.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault(); // empêche la saisie de la touche Entrée
+                this.form.submit(); // soumet le formulaire
+                }
+            });
+            });
+
+            
+
+
         </script>
         
 </body>

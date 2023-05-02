@@ -142,3 +142,29 @@ def add_task():
     # Afficher la page du calendrier de la semaine correspondant à la date du champ caché
     calendar, events, date = get_calendar_and_events(date)
     return render_template('calendar.html', events=events, calendar=calendar, date=date)
+
+
+@bp.route('/update_event', methods=['POST'])
+def update_event():
+    # Récupération de l'identifiant de l'événement à mettre à jour et du nouveau contenu
+    event_id = request.form.get('event_id')
+    new_content = request.form.get('content')
+    date_str = request.form['data-date']
+    date = datetime.strptime(date_str, '%Y-%m-%d')
+
+    # Connexion à la base de données
+    conn = sqlite3.connect('instance/database.sqlite')
+    cursor = conn.cursor()
+
+    # Exécution d'une requête SQL pour mettre à jour le contenu de l'événement
+    cursor.execute(
+        'UPDATE event SET txt_content = ? WHERE id = ?', (new_content, event_id))
+
+    # Validation de la transaction
+    conn.commit()
+
+    # Fermeture de la connexion à la base de données
+    conn.close()
+
+    calendar, events, date = get_calendar_and_events(date)
+    return render_template('calendar.html', events=events, calendar=calendar, date=date)
