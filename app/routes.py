@@ -2,6 +2,8 @@ import sqlite3
 from flask import Blueprint, render_template, request, redirect
 from datetime import datetime, timedelta
 
+from .db import get_db
+
 # Création d'un Blueprint pour les routes
 bp = Blueprint('routes', __name__)
 
@@ -33,13 +35,16 @@ def get_calendar_and_events(date):
     calendar = [{'day': day, 'date': date} for day, date in zip(days, dates)]
 
     # Connexion à la base de données
-    conn = sqlite3.connect('instance/database.sqlite')
+    conn = get_db()
     cursor = conn.cursor()
 
     # Récupération de tous les événements associés au calendrier spécifié par l'identifiant 'id'
     cursor.execute(
         'SELECT * FROM event WHERE id_cal = ? ORDER BY event_date ASC', (1,))
     events = cursor.fetchall()
+    events = [dict(event) for event in events]
+    for event in events:
+        event['color'] = '#' + hex(abs(hash(str(event['id']))))[2:8]
 
     # Fermeture de la connexion à la base de données
     conn.close()

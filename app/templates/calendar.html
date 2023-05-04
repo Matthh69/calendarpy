@@ -28,22 +28,15 @@
                         <ul>
                             {% for event in events %}
                            
-                                {% if event[1].split()[0] == item['date'].strftime('%Y-%m-%d') %}
-                                
-                                
-                      
-
+                                {% if event['event_date'].split()[0] == item['date'].strftime('%Y-%m-%d') %}
+                    
                                 <form class="editEventForm" method="POST" action="/update_event">
-                                    <textarea type="text" class="eventContent" name="content" value="{{ event[2] }}"  >{{ event[2] }}</textarea>
-                                    <input type="hidden" name="event_id" value="{{ event[0] }}">
+                                    <textarea type="text" class="eventContent" data-id-event="{{ event['id'] }}" name="content" style="background: {{ event['color'] }}">{{ event['txt_content'] }}</textarea>
+                                    <input type="hidden" name="event_id" value="{{ event['id'] }}">
                                     <input type="hidden" name="data-date" value="{{ item['date'] }}">
                                     <button type="submit" class="updateButton" style="display:none;">Enregistrer</button>
                                 </form>
-                                
-                                
-
-                                  
-                                
+                            
                                 {% endif %}
                             {% endfor %}
                         </ul>
@@ -59,20 +52,7 @@
         
     
         <script>
-            var lis = document.querySelectorAll(".eventContent");
-            function getRandomColor() {
-                var letters = '0123456789ABCDEF';
-                var color = '#';
-                for (var i = 0; i < 6; i++) {
-                    color += letters[Math.floor(Math.random() * 16)];
-                    
-                }
-                return color;
-            }
-    
-            for (var i = 0; i < lis.length; i++) {
-                lis[i].style.backgroundColor = getRandomColor();
-            }
+
 
 
             var textareas = document.querySelectorAll('.eventContent');
