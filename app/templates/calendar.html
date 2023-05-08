@@ -8,17 +8,11 @@
 <body>
   
     <div class="button-container">
-        <a href="{{ url_for('routes.previous_week', date=calendar[0]['date']) }}">Semaine précédente</a>
+        <a href="{{ url_for('routes.previous_week', id=id, date=calendar[0]['date']) }}">Semaine précédente</a>
         <h1>Calendrier</h1>
-        <a href="{{ url_for('routes.next_week', date=calendar[0]['date']) }}">Semaine Suivante </a>
-      </div>
-
-      
-  
-      
-
+        <a href="{{ url_for('routes.next_week', id=id, date=calendar[0]['date']) }}">Semaine suivante</a>
+    </div>
     
-           
         <div class="semaine">
             {% for item in calendar %}
 
@@ -34,17 +28,21 @@
                                     <textarea type="text" class="eventContent" data-id-event="{{ event['id'] }}" name="content" style="background: {{ event['color'] }}">{{ event['txt_content'] }}</textarea>
                                     <input type="hidden" name="event_id" value="{{ event['id'] }}">
                                     <input type="hidden" name="data-date" value="{{ item['date'] }}">
+                                    <input type="hidden" name="idCal" value="{{ id }}">
                                     <button type="submit" class="updateButton" style="display:none;">Enregistrer</button>
                                 </form>
                             
                                 {% endif %}
                             {% endfor %}
                         </ul>
-                        <form method="POST" class="newEventForm" action="/add_task">
+                        <form method="POST" class="newEventForm" action="/add_task/">
                             <input type="text" class="inputAddTask" id="input" name="task" required>
                             <input type="hidden" name="data-date" value="{{ item['date'] }}">
-                            <button class="addClasse" type="submit">Ajouter une tâche</button>
+                            <input type="hidden" name="idCal" value="{{ id }}">
+                            <button class="addClasse" type="submit">Ajouter une tâche {{ id }}</button>
                         </form>
+                        
+                        
                     </div>
                 </div>
             {% endfor %} 
