@@ -3,6 +3,8 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from datetime import datetime, timedelta
 from . import db
 import uuid
+import hashlib
+
 
 # Création d'un Blueprint pour les routes
 bp = Blueprint('routes', __name__)
@@ -23,9 +25,15 @@ def create_calendar():
         "INSERT INTO calendar DEFAULT VALUES")
     new_id = cursor.lastrowid
     conn.commit()
+
+    # Générer le hash à partir de l'id généré
+    hash_obj = hashlib.sha256(str(new_id).encode('utf-8'))
+    hash_value = hash_obj.hexdigest()
+
     conn.close()
-    # Redirection vers la page du nouveau calendrier créé
-    url = url_for('routes.calendar', id=new_id)
+
+    # Redirection vers la page du nouveau calendrier créé, en incluant le hash dans l'URL
+    url = url_for('routes.calendar', id=new_id, hash=hash_value)
     return redirect(url)
 
 
@@ -73,8 +81,16 @@ def get_calendar_and_events(date, id=None):
 
 
 @bp.route('/calendar/<int:id>/')
+@bp.route('/calendar/<int:id>/<string:hash>')
 @bp.route('/calendar/<int:id>/<date>/')
-def calendar(date=None, id=None):
+def calendar(date=None, id=None, hash=None):
+
+    if hash:
+        # Vérification si le hash correspond à l'id du calendrier
+        hash_obj = hashlib.sha256(str(id).encode('utf-8'))
+        if hash != hash_obj.hexdigest():
+            return render_template('error.html')
+
     if date is None:
         date_obj = datetime.now()
     else:
@@ -154,11 +170,13 @@ def update_event():
     idCal = request.form['idCal']
     date = datetime.strptime(date_str, '%Y-%m-%d')
 
-    # Exécution d'une requête SQL pour mettre à jour le contenu de l'événement
-    conn.execute(
-        'UPDATE event SET txt_content = ? WHERE id = ?', (
-            new_content, event_id)
-    )
+    # Si le champ "content" est vide, on supprime l'événement
+    if not new_content:
+        conn.execute('DELETE FROM event WHERE id = ?', (event_id,))
+    else:
+        # Exécution d'une requête SQL pour mettre à jour le contenu de l'événement
+        conn.execute('UPDATE event SET txt_content = ? WHERE id = ?',
+                     (new_content, event_id))
 
     # Validation de la transaction
     conn.commit()

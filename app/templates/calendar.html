@@ -6,10 +6,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  
+    
     <div class="button-container">
         <a href="{{ url_for('routes.previous_week', id=id, date=calendar[0]['date']) }}">Semaine précédente</a>
         <h1>Calendrier</h1>
+        <a href="mailto:?subject=Calendrier&amp;body={{ request.url }}">Partager par email</a>
+
         <a href="{{ url_for('routes.next_week', id=id, date=calendar[0]['date']) }}">Semaine suivante</a>
     </div>
     
