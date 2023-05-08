@@ -2,6 +2,7 @@ import sqlite3
 from flask import Blueprint, render_template, request, redirect, url_for
 from datetime import datetime, timedelta
 from . import db
+import uuid
 
 # Création d'un Blueprint pour les routes
 bp = Blueprint('routes', __name__)
@@ -10,10 +11,22 @@ bp = Blueprint('routes', __name__)
 
 
 @bp.route("/")
-def hello_world():
-    return render_template('index.html')
+def logOrCreateCalender():
+    return render_template('createCalendar.html')
 
-# Fonction pour récupérer le calendrier et les événements associés
+
+@bp.route('/create_calendar', methods=['POST'])
+def create_calendar():
+    conn = sqlite3.connect('instance/database.sqlite')
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO calendar DEFAULT VALUES")
+    new_id = cursor.lastrowid
+    conn.commit()
+    conn.close()
+    # Redirection vers la page du nouveau calendrier créé
+    url = url_for('routes.calendar', id=new_id)
+    return redirect(url)
 
 
 def get_calendar_and_events(date, id=None):
@@ -58,6 +71,8 @@ def get_calendar_and_events(date, id=None):
 
 # http://127.0.0.1:5000/calendar/2/2023-05-16/
 
+
+@bp.route('/calendar/<int:id>/')
 @bp.route('/calendar/<int:id>/<date>/')
 def calendar(date=None, id=None):
     if date is None:
