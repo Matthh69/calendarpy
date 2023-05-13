@@ -6,15 +6,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    
+
     <div class="button-container">
-        <a href="{{ url_for('routes.previous_week', id=id, date=calendar[0]['date']) }}">Semaine précédente</a>
+        <a href="{{ url_for('routes.previous_week', date=date) }}">Semaine précédente</a>
         <h1>Calendrier</h1>
         <a href="mailto:?subject=Calendrier&amp;body={{ request.url }}">Partager par email</a>
 
-        <a href="{{ url_for('routes.next_week', id=id, date=calendar[0]['date']) }}">Semaine suivante</a>
+        <a href="{{ url_for('routes.next_week', date=date) }}">Semaine suivante</a>
     </div>
-    
+     
         <div class="semaine">
             {% for item in calendar %}
 
@@ -41,7 +41,7 @@
                             <input type="text" class="inputAddTask" id="input" name="task" required>
                             <input type="hidden" name="data-date" value="{{ item['date'] }}">
                             <input type="hidden" name="idCal" value="{{ id }}">
-                            <button class="addClasse" type="submit">Ajouter une tâche {{ id }}</button>
+                            <button class="addClasse" type="submit">Ajouter une tâche</button>
                         </form>
                         
                         
