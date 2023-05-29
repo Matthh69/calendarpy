@@ -7,74 +7,79 @@
 </head>
 <body>
 
-    <div class="button-container">
-        <a href="{{ url_for('routes.previous_week', date=date) }}">Semaine précédente</a>
-        <h1>Calendrier</h1>
-        <a href="mailto:?subject=Calendrier&amp;body={{ request.url }}">Partager par email</a>
+<header>
+    <h1><a href="/">calendarpy</a></h1>
+    <nav>
+        <ul>
+            <li><a href="#">A Propos</a></li>
+            <li><a href="#">Aide</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <a href="{{ url_for('routes.next_week', date=date) }}">Semaine suivante</a>
-    </div>
-     
-        <div class="semaine">
-            {% for item in calendar %}
-
-                <div id="jour" class="jour">
-                    <div class="titre_jour">{{ item['day'] }}  {{ item['date'] }}</div>
-                    <div class="contenu_jour">
-                        <ul>
-                            {% for event in events %}
-                           
-                                {% if event['event_date'].split()[0] == item['date'].strftime('%Y-%m-%d') %}
-                    
-                                <form class="editEventForm" method="POST" action="/update_event">
-                                    <textarea type="text" class="eventContent" data-id-event="{{ event['id'] }}" name="content" style="background: {{ event['color'] }}">{{ event['txt_content'] }}</textarea>
-                                    <input type="hidden" name="event_id" value="{{ event['id'] }}">
-                                    <input type="hidden" name="data-date" value="{{ item['date'] }}">
-                                    <input type="hidden" name="idCal" value="{{ id }}">
-                                    <button type="submit" class="updateButton" style="display:none;">Enregistrer</button>
-                                </form>
-                            
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                        <form method="POST" class="newEventForm" action="/add_task/">
-                            <input type="text" class="inputAddTask" id="input" name="task" required>
-                            <input type="hidden" name="data-date" value="{{ item['date'] }}">
-                            <input type="hidden" name="idCal" value="{{ id }}">
-                            <button class="addClasse" type="submit">Ajouter une tâche</button>
-                        </form>
-                        
-                        
-                    </div>
-                </div>
-            {% endfor %} 
-        </div>
-        
+<div class="button-container">
+    <a href="{{ url_for('routes.previous_week', date=date) }}">Semaine précédente</a>
     
-        <script>
+    <a href="mailto:?subject=Calendrier&amp;body={{ request.url }}">Partager par email</a>
+    <a href="{{ url_for('routes.next_week', date=date) }}">Semaine suivante</a>
+</div>
 
+<div class="content">
+    <div class="semaine">
+        {% for item in calendar %}
+        <div id="jour" class="jour">
+            <div class="titre_jour">{{ item['day'] }}  {{ item['date'] }}</div>
+            <div class="contenu_jour">
+                <ul>
+                    {% for event in events %}
+                    {% if event['event_date'].split()[0] == item['date'].strftime('%Y-%m-%d') %}
+                    <form class="editEventForm" method="POST" action="/update_event">
+                        <textarea type="text" class="eventContent" data-id-event="{{ event['id'] }}" name="content" style="background: {{ event['color'] }}">{{ event['txt_content'] }}</textarea>
+                        <input type="hidden" name="event_id" value="{{ event['id'] }}">
+                        <input type="hidden" name="data-date" value="{{ item['date'] }}">
+                        <input type="hidden" name="idCal" value="{{ id }}">
+                        <button type="submit" class="updateButton" style="display:none;">Enregistrer</button>
+                    </form>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <form method="POST" class="newEventForm" action="/add_task/">
+                    <input type="text" class="inputAddTask" id="input" name="task" required>
+                    <input type="hidden" name="data-date" value="{{ item['date'] }}">
+                    <input type="hidden" name="idCal" value="{{ id }}">
+                    <button class="addClasse" type="submit">Ajouter une tâche</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
+<footer>
+    <div class="marquee-container">
+        <div class="marquee">
+            <span>Mentions légales | </span>
+            <span>© 2023 CalendarPy. Tous droits réservés.</span>
+        </div>
+    </div>
+</footer>
 
-            var textareas = document.querySelectorAll('.eventContent');
+<script>
+    var textareas = document.querySelectorAll('.eventContent');
 
-            textareas.forEach(function(textarea) {
-            textarea.addEventListener('input', function() {
-                this.style.height = 'auto';
-                this.style.height = this.scrollHeight + 'px';
-            });
+    textareas.forEach(function(textarea) {
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
 
-            textarea.addEventListener("keydown", function(e) {
-                if (e.key === "Enter" && !e.shiftKey) {
+        textarea.addEventListener("keydown", function(e) {
+            if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault(); // empêche la saisie de la touche Entrée
-                this.form.submit(); // soumet le formulaire
-                }
-            });
-            });
+            }
+        });
+    });
+</script>
 
-            
-
-
-        </script>
-        
 </body>
 </html>

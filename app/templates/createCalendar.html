@@ -3,18 +3,51 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title></title>
+    <link rel="stylesheet" href="../static/createCalendar.css">
+    <title>Créer un calendrier</title>
   </head>
   <body>
-    <div>
-      <h1>Créer un calendrier</h1>
-      <!-- createCalendar.html -->
-      <form action="/create_calendar" method="POST">
-        <button type="submit">Créer un nouveau calendrier</button>
-    </form>
+    <header>
+      <h1><a href="/">calendarpy</a></h1>
+      <nav>
+        <ul>
+          <li><a href="#" class="active">A Propos</a></li>
+          <li><a href="#">Aide</a></li>
+        </ul>
+      </nav>
+    </header>
     
-  
- 
+    <div class="content center-content">
+      <h2>Créer un calendrier</h2>
+      
+      <div class="info-container">
+        <div class="info-block">
+          <h3>Planification facile</h3>
+          <p>Planifiez vos événements et tâches en toute simplicité.</p>
+        </div>
+        
+        <div class="info-block">
+          <h3>Partagez avec vos proches</h3>
+          <p>Partagez votre calendrier avec votre famille et vos amis.</p>
+        </div>
+      </div>
+      
+      <form action="/create_calendar" method="POST">
+        <button type="submit" class="create-button">Créer un nouveau calendrier</button>
+      </form>
     </div>
+    
+    
+    
+    <footer>
+      <div class="marquee-container">
+        <div class="marquee">
+          <span>Mentions légales | </span>
+          <span>© 2023 CalendarPy. Tous droits réservés.</span>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="../static/createCalendar.js"></script>
   </body>
 </html>
