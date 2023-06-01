@@ -35,8 +35,14 @@
                     <div class="titre_jour">{{ item['date'].strftime("%A %d %B").capitalize() }}</div>
                 
 
-
                     <div class="contenu_jour">
+                        <form method="POST" class="newEventForm" action="/add_task/">
+                            <textarea type="text" class="submitNewEvent" id="input" name="task" placeholder="Nouveau message"></textarea>
+                            <!-- <input type="text" class="inputAddTask" id="input" name="task" required> -->
+                            <input type="hidden" name="data-date" value="{{ item['date'] }}">
+                            <input type="hidden" name="idCal" value="{{ id }}">
+                            <!--<button class="addClasse" type="submit">Ajouter une tâche</button>-->
+                        </form>
                         <ul>
                             {% for event in events %}
                            
@@ -55,13 +61,7 @@
                                 {% endif %}
                             {% endfor %}
                         </ul>
-                        <form method="POST" class="newEventForm" action="/add_task/">
-                            <textarea type="text" class="submitNewEvent" id="input" name="task" placeholder="Nouveau message"></textarea>
-                            <!-- <input type="text" class="inputAddTask" id="input" name="task" required> -->
-                            <input type="hidden" name="data-date" value="{{ item['date'] }}">
-                            <input type="hidden" name="idCal" value="{{ id }}">
-                            <!--<button class="addClasse" type="submit">Ajouter une tâche</button>-->
-                        </form>
+
                         
                         
                     </div>
