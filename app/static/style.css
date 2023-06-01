@@ -171,21 +171,20 @@ button[type="submit"]:hover {
 }
 
 .eventContent {
-  font-size: 1.2em;
+  color: white;
+  resize: none;
+  overflow: hidden;
+
   font-weight: bold;
-  color: #ffffff;
   border: none;
-  opacity: 50%; /* Réduisez la valeur d'opacité pour une couleur d'arrière-plan plus claire */
+  opacity: 50%; 
   border-radius: 10px;
-  padding: 10px;
-  resize: vertical;
-  overflow: auto;
-  min-height: 20px;
-  outline: none; /* enlève les petits traits noirs */
-  scrollbar-width: thin; /* spécifie la largeur de la scrollbar */
-  scrollbar-color: #888888 #ffffff; /* spécifie la couleur de la scrollbar */
-  line-height: 1; /* ajuste la hauteur de ligne au comportement par défaut */
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
+
+
 
 
 
@@ -198,8 +197,3 @@ footer {
   background: linear-gradient(90deg, rgb(245, 245, 245), rgb(249, 249, 249));
 }
 
-
-.autosize {
-  resize: none;
-  overflow: hidden;
-}

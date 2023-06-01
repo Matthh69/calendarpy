@@ -45,6 +45,7 @@
                                     <input type="hidden" name="idCal" value="{{ id }}">
                                     <button type="submit" class="updateButton" style="display:none;">Enregistrer</button>
                                 </form>
+                              
                            
                             
                                 {% endif %}
@@ -62,10 +63,8 @@
                 </div>
             {% endfor %} 
         </div>
-        <!--
-        <textarea class="autosize">
-            Multiple lines work on load
-            Go ahead and add or delete</textarea>-->
+        
+ 
         <footer>
             <div class="marquee-container">
                 <div class="marquee">
@@ -79,15 +78,10 @@
         <script>
 
 
-        
+          
             var textareas = document.querySelectorAll('.eventContent');
 
             textareas.forEach(function(textarea) {
-            textarea.addEventListener('input', function() {
-                this.style.height = 'auto';
-                this.style.height = this.scrollHeight + 'px';
-            });
-
             textarea.addEventListener("keydown", function(e) {
                 if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault(); // empêche la saisie de la touche Entrée
@@ -96,11 +90,10 @@
                 }
             });
             });
-            
-            /*
+  
             autosize();
             function autosize(){
-                var text = $('.autosize');
+                var text = $('.eventContent');
 
                 text.each(function(){
                     $(this).attr('rows',1);
@@ -115,7 +108,7 @@
                     $text.css('height', 'auto');
                     $text.css('height', $text[0].scrollHeight+'px');
                 }
-            }*/
+            }
 
 
         </script>
