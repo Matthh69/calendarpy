@@ -113,9 +113,10 @@ body{
 }
 
 .contenu_jour {
-  padding: 2px;
+  padding: 10px;
   border: 1px solid rgb(0, 0, 0);
   height: 100%;
+  overflow-y: auto;
 }
 .contenu_jour ul {
   list-style-type: none;
