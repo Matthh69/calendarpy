@@ -1,41 +1,39 @@
-/*----------------- LE HEADER -----------------*/
+/*----------------- LE HEADER /*-----------------*/
 header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
+  background-color: rgb(51, 51, 51);
+  color: white;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 header h1 {
+  font-size: 24px;
   margin: 0;
 }
 
-header a {
-  color: #fff;
+header h1 a {
   text-decoration: none;
+  color: white;
 }
 
-nav ul {
+header nav ul {
   list-style-type: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-nav ul li {
-  display: inline;
-  margin-right: 10px;
+header nav ul li {
+  margin-left: 10px;
 }
 
-nav ul li:last-child {
-  margin-right: 0;
+header nav ul li a {
+  text-decoration: none;
+  color: white;
 }
 
-/*----------------- LE CALENDRIER -----------------*/
-.content {
-  margin: 20px;
-}
 
 .button-container {
   display: flex;
@@ -68,6 +66,7 @@ nav ul li:last-child {
   border-style: solid;
   border-width: 8px 10px 8px 0;
   border-color: transparent #333 transparent transparent;
+  /*color: #${substring(calc(abs(hash('1'))), 0, 6)}; fixer la couleur*/
 }
 
 .button-container a:last-child::before {
@@ -79,45 +78,51 @@ nav ul li:last-child {
   border-style: solid;
   border-width: 8px 0 8px 10px;
   border-color: transparent transparent transparent #333;
+  /*color: #${substring(calc(abs(hash('1'))), 0, 6)}; fixer la couleur*/
 }
 
 .button-container a:hover {
   background-color: #eee;
 }
 
+/*----------------- LE CALENDRIER /*-----------------*/
+body{
+  margin: 0;
+  padding: 0;
+}
 .semaine {
   display: flex;
+  /*border: 2px solid black;*/
+  height: 90vh;
+  margin-bottom: 80px; /* Ajout de la marge en bas équivalente à la hauteur du footer */
 }
 
+
 .jour {
-  border: 1px solid #333;
   margin: 5px;
   flex: 1;
 }
 
 .contenu_jour {
   padding: 2px;
-  border: 1px solid #333;
-  height: 85%;
+  border: 1px solid rgb(0, 0, 0);
+  height: 100%;
 }
-
 .contenu_jour ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-
 .contenu_jour li {
   padding: 10px;
-  margin-bottom: 5px;
-  color: #fff;
+
+  color: white;
 }
 
 .titre_jour {
   padding: 20px;
-  border: 1px solid #333;
-  background-color: #333;
-  color: #fff;
+  background-color: rgb(51, 51, 51);
+  color: white;
 }
 
 form {
@@ -170,62 +175,31 @@ button[type="submit"]:hover {
   font-weight: bold;
   color: #ffffff;
   border: none;
-  opacity: 80%;
+  opacity: 50%; /* Réduisez la valeur d'opacité pour une couleur d'arrière-plan plus claire */
   border-radius: 10px;
   padding: 10px;
   resize: vertical;
   overflow: auto;
-  height: 100%;
-  min-height: 50px;
-  outline: none;
-  scrollbar-width: thin;
-  scrollbar-color: #888888 #ffffff;
+  min-height: 20px;
+  outline: none; /* enlève les petits traits noirs */
+  scrollbar-width: thin; /* spécifie la largeur de la scrollbar */
+  scrollbar-color: #888888 #ffffff; /* spécifie la couleur de la scrollbar */
+  line-height: 1; /* ajuste la hauteur de ligne au comportement par défaut */
 }
 
-/* Footer */
+
+
+
 footer {
-  background: linear-gradient(90deg, #f5f5f5, #f9f9f9);
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(90deg, rgb(245, 245, 245), rgb(249, 249, 249));
 }
 
-footer p {
-  margin: 0;
-  font-size: 12px;
-  color: #888;
-}
 
-footer::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #ccc;
-}
-
-footer::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #333;
-  animation: footerAnimation 10s infinite;
-}
-
-@keyframes footerAnimation {
-  0% {
-    background-color: #333;
-  }
-  50% {
-    background-color: #555;
-  }
-  100% {
-    background-color: #333;
-  }
+.autosize {
+  resize: none;
+  overflow: hidden;
 }

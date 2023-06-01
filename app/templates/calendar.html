@@ -6,80 +6,119 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <header>
+        <h1><a href="/">calendarpy</a></h1>
+        <nav>
+            <ul>
+                <li><a href="#">A Propos</a></li>
+                <li><a href="#">Aide</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <h1><a href="/">calendarpy</a></h1>
-    <nav>
-        <ul>
-            <li><a href="#">A Propos</a></li>
-            <li><a href="#">Aide</a></li>
-        </ul>
-    </nav>
-</header>
+    <div class="button-container">
+        <a href="{{ url_for('routes.previous_week', date=date) }}">Semaine précédente</a>
 
-<div class="button-container">
-    <a href="{{ url_for('routes.previous_week', date=date) }}">Semaine précédente</a>
-    
-    <a href="mailto:?subject=Calendrier&amp;body={{ request.url }}">Partager par email</a>
-    <a href="{{ url_for('routes.next_week', date=date) }}">Semaine suivante</a>
-</div>
+        <a href="mailto:?subject=Calendrier&amp;body={{ request.url }}">Partager par email</a>
 
-<div class="content">
-    <div class="semaine">
-        {% for item in calendar %}
-        <div id="jour" class="jour">
-            <div class="titre_jour">{{ item['day'] }}  {{ item['date'] }}</div>
-            <div class="contenu_jour">
-                <ul>
-                    {% for event in events %}
-                    {% if event['event_date'].split()[0] == item['date'].strftime('%Y-%m-%d') %}
-                    <form class="editEventForm" method="POST" action="/update_event">
-                        <textarea type="text" class="eventContent" data-id-event="{{ event['id'] }}" name="content" style="background: {{ event['color'] }}">{{ event['txt_content'] }}</textarea>
-                        <input type="hidden" name="event_id" value="{{ event['id'] }}">
-                        <input type="hidden" name="data-date" value="{{ item['date'] }}">
-                        <input type="hidden" name="idCal" value="{{ id }}">
-                        <button type="submit" class="updateButton" style="display:none;">Enregistrer</button>
-                    </form>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <form method="POST" class="newEventForm" action="/add_task/">
-                    <input type="text" class="inputAddTask" id="input" name="task" required>
-                    <input type="hidden" name="data-date" value="{{ item['date'] }}">
-                    <input type="hidden" name="idCal" value="{{ id }}">
-                    <button class="addClasse" type="submit">Ajouter une tâche</button>
-                </form>
+        <a href="{{ url_for('routes.next_week', date=date) }}">Semaine suivante</a>
+    </div>
+     
+        <div class="semaine">
+            {% for item in calendar %}
+
+                <div id="jour" class="jour">
+                    <div class="titre_jour">{{ item['date'].strftime("%A %d %B").capitalize() }}</div>
+                
+
+
+                    <div class="contenu_jour">
+                        <ul>
+                            {% for event in events %}
+                           
+                                {% if event['event_date'].split()[0] == item['date'].strftime('%Y-%m-%d') %}
+                    
+                                <form class="editEventForm" method="POST" action="/update_event">
+                                    <textarea type="text" class="eventContent" data-id-event="{{ event['id'] }}" name="content" style="background: {{ event['color'] }}">{{ event['txt_content'] }}</textarea>
+                                    <input type="hidden" name="event_id" value="{{ event['id'] }}">
+                                    <input type="hidden" name="data-date" value="{{ item['date'] }}">
+                                    <input type="hidden" name="idCal" value="{{ id }}">
+                                    <button type="submit" class="updateButton" style="display:none;">Enregistrer</button>
+                                </form>
+                           
+                            
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <form method="POST" class="newEventForm" action="/add_task/">
+                            <input type="text" class="inputAddTask" id="input" name="task" required>
+                            <input type="hidden" name="data-date" value="{{ item['date'] }}">
+                            <input type="hidden" name="idCal" value="{{ id }}">
+                            <button class="addClasse" type="submit">Ajouter une tâche</button>
+                        </form>
+                        
+                        
+                    </div>
+                </div>
+            {% endfor %} 
+        </div>
+        <!--
+        <textarea class="autosize">
+            Multiple lines work on load
+            Go ahead and add or delete</textarea>-->
+        <footer>
+            <div class="marquee-container">
+                <div class="marquee">
+                    <span>Mentions légales | </span>
+                    <span>© 2023 CalendarPy. Tous droits réservés.</span>
+                </div>
             </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<footer>
-    <div class="marquee-container">
-        <div class="marquee">
-            <span>Mentions légales | </span>
-            <span>© 2023 CalendarPy. Tous droits réservés.</span>
-        </div>
-    </div>
-</footer>
+        <script>
 
-<script>
-    var textareas = document.querySelectorAll('.eventContent');
 
-    textareas.forEach(function(textarea) {
-        textarea.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = this.scrollHeight + 'px';
-        });
+        
+            var textareas = document.querySelectorAll('.eventContent');
 
-        textarea.addEventListener("keydown", function(e) {
-            if (e.key === "Enter" && !e.shiftKey) {
+            textareas.forEach(function(textarea) {
+            textarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+
+            textarea.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault(); // empêche la saisie de la touche Entrée
-            }
-        });
-    });
-</script>
+                this.form.submit(); // soumet le formulaire
+                console.log('form envoyé')
+                }
+            });
+            });
+            
+            /*
+            autosize();
+            function autosize(){
+                var text = $('.autosize');
 
+                text.each(function(){
+                    $(this).attr('rows',1);
+                    resize($(this));
+                });
+
+                text.on('input', function(){
+                    resize($(this));
+                });
+                
+                function resize ($text) {
+                    $text.css('height', 'auto');
+                    $text.css('height', $text[0].scrollHeight+'px');
+                }
+            }*/
+
+
+        </script>
+        
 </body>
 </html>

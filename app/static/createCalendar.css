@@ -1,153 +1,147 @@
 /* Reset some default browser styles */
 body, h1, h2, h3, h4, h5, h6, p, ul, li {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Baskerville, serif;
-    background: url("../static/calendar_background.png") repeat center center;
-    background-size: 550px;
-    overflow-x: hidden; /* Empêche l'apparition de la barre de défilement horizontale */
-  }
-  
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  header h1 {
-    font-size: 24px;
-  }
-  
-  header h1 a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    display: flex;
-  }
-  
-  nav ul li {
-    margin-left: 10px;
-  }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  nav ul li a:hover {
-    color: #ff0000;
-  }
-  
-  .content {
-    margin: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    text-align: center;
-  }
-  
-  footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  .marquee-container {
-    overflow: hidden;
-  }
-  
-  .marquee {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: marquee 20s linear infinite;
-  }
-  
-  .marquee span {
-    display: inline-block;
-    padding-right: 10px;
-  }
+  margin: 0;
+  padding: 0;
+}
 
-  .content {
-    margin: 20px;
-    text-align: center;
-  }
-  
-  .create-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    border: none;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-  }
-  
-  .info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .info-block {
-    width: 300px;
-    padding: 20px;
-    margin: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+body {
+  font-family: Baskerville, serif;
+  background: url("../static/calendar_background.png") repeat center center;
+  background-size: 550px;
+  overflow-x: hidden; /* Empêche l'apparition de la barre de défilement horizontale */
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #ff0000;
+}
+
+.content {
+  margin: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  text-align: center;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.marquee-container {
+  overflow: hidden;
+}
+
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.content {
+  margin: 20px;
+  text-align: center;
+}
+
+.create-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.info-block {
+  width: 300px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 1s ease forwards;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.info-block h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.info-block p {
+  font-size: 16px;
+}
+
+
+
+
+@keyframes fadeSlideIn {
+  from {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeSlideIn 1s ease forwards;
   }
-
-  .center-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .info-block h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .info-block p {
-    font-size: 16px;
-  }
-  
-  
-  @keyframes marquee {
-    0% {
-      transform: translateX(100%);
-    }
-      
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  @keyframes fadeSlideIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}

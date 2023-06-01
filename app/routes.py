@@ -1,10 +1,13 @@
 import sqlite3
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from datetime import datetime, timedelta
+import locale
+
 from . import db
 import uuid
 import hashlib
 
+# http://127.0.0.1:5000/calendar/2023-05-29/4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5
 # changer couleur sur demande
 # mdp de confirmation quand on arrive sur calendrier
 
@@ -132,12 +135,18 @@ def calendar(date=None, hash=None):
     elif FindId == False:  # Si false ca veut dire que le hash calculé avec tous les id_cal n'as jamais donné le hash affiché donc on affiche pas le calendrier
         return render_template('error.html')
 
+    # Définir la localisation en français
+    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+
+    # Récupérer la localisation en cours
+    current_locale = locale.getlocale()
+
     print('ID SESSION IS', idCalSession)
     print('HASH VERIFICATION IS GOOD', hash)
 
     calendar, events, monday = get_calendar_and_events(date_obj, idCalSession)
 
-    return render_template('calendar.html', events=events, calendar=calendar, monday=monday, date=monday.strftime('%Y-%m-%d'), id=idCalSession)
+    return render_template('calendar.html', events=events, calendar=calendar, monday=monday, date=monday.strftime('%Y-%m-%d'), id=idCalSession, current_locale=current_locale)
 
 
 @bp.route('/previous_week/<date>')
