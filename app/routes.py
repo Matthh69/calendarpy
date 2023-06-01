@@ -121,6 +121,7 @@ def get_calendar_and_events(date, id=None):
 @bp.route('/calendar/<string:hash>')
 @bp.route('/calendar/<date>/<string:hash>')
 def calendar(date=None, hash=None):
+
     # si la date n'est pas spécifiée en paramètre alors on affiche la semaine actuelle
     if date is None:
         date_obj = datetime.now()
@@ -146,7 +147,10 @@ def calendar(date=None, hash=None):
 
     calendar, events, monday = get_calendar_and_events(date_obj, idCalSession)
 
-    return render_template('calendar.html', events=events, calendar=calendar, monday=monday, date=monday.strftime('%Y-%m-%d'), id=idCalSession, current_locale=current_locale)
+    current_year = date_obj.year
+    current_month = date_obj.strftime('%B')  # This will give month in letters
+
+    return render_template('calendar.html', events=events, calendar=calendar, monday=monday, date=monday.strftime('%Y-%m-%d'), id=idCalSession, current_locale=current_locale, current_year=current_year, current_month=current_month)
 
 
 @bp.route('/previous_week/<date>')

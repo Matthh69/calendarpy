@@ -8,6 +8,11 @@ header {
   align-items: center;
 }
 
+.header_date {
+  display: flex;
+  align-items: center;
+}
+
 header h1 {
   font-size: 24px;
   margin: 0;
@@ -16,6 +21,10 @@ header h1 {
 header h1 a {
   text-decoration: none;
   color: white;
+}
+
+header h2 {
+  margin: 10px;
 }
 
 header nav ul {
