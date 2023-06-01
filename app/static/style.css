@@ -193,7 +193,21 @@ button[type="submit"]:hover {
   padding-right: 10px;
 }
 
+.submitNewEvent {
+  background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    resize: none;
+    overflow: hidden;
+    font-weight: bold;
 
+    opacity: 100%;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
 
 
 

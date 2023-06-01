@@ -56,10 +56,11 @@
                             {% endfor %}
                         </ul>
                         <form method="POST" class="newEventForm" action="/add_task/">
-                            <input type="text" class="inputAddTask" id="input" name="task" required>
+                            <textarea type="text" class="submitNewEvent" id="input" name="task" placeholder="Nouveau message"></textarea>
+                            <!-- <input type="text" class="inputAddTask" id="input" name="task" required> -->
                             <input type="hidden" name="data-date" value="{{ item['date'] }}">
                             <input type="hidden" name="idCal" value="{{ id }}">
-                            <button class="addClasse" type="submit">Ajouter une tâche</button>
+                            <!--<button class="addClasse" type="submit">Ajouter une tâche</button>-->
                         </form>
                         
                         
@@ -80,40 +81,37 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <script>
-
-
-          
-            var textareas = document.querySelectorAll('.eventContent');
-
+            var textareas = document.querySelectorAll('.eventContent, .submitNewEvent');
+            
             textareas.forEach(function(textarea) {
-            textarea.addEventListener("keydown", function(e) {
+                textarea.addEventListener("keydown", function(e) {
                 if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault(); // empêche la saisie de la touche Entrée
-                this.form.submit(); // soumet le formulaire
-                console.log('form envoyé')
+                    e.preventDefault();
+                    this.form.submit();
+                    console.log('Formulaire envoyé');
                 }
+                });
             });
-            });
-  
+
             autosize();
-            function autosize(){
-                var text = $('.eventContent');
+            
+            function autosize() {
+                var text = $('.eventContent, .submitNewEvent');
 
-                text.each(function(){
-                    $(this).attr('rows',1);
-                    resize($(this));
+                text.each(function() {
+                $(this).attr('rows', 1);
+                resize($(this));
                 });
 
-                text.on('input', function(){
-                    resize($(this));
+                text.on('input', function() {
+                resize($(this));
                 });
-                
-                function resize ($text) {
-                    $text.css('height', 'auto');
-                    $text.css('height', $text[0].scrollHeight+'px');
+
+                function resize($text) {
+                $text.css('height', 'auto');
+                $text.css('height', $text[0].scrollHeight + 'px');
                 }
             }
-
 
         </script>
         
