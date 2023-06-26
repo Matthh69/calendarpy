@@ -3,6 +3,8 @@ button, textarea, a {
   cursor: pointer;
 }
 
+
+
 header {
   background-color: rgb(51, 51, 51);
   color: white;
@@ -52,12 +54,26 @@ nav ul li a:hover {
 }
 
 
+
 .button-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 20px 0;
 }
+
+.button-container a:nth-child(1) {
+  background-color: rgba(255, 255, 255, 0.658);
+}
+
+.button-container a:nth-child(2) {
+  background-color: rgba(255, 255, 255, 0.658);
+}
+
+.button-container a:nth-child(3) {
+  background-color: rgba(255, 255, 255, 0.658);
+}
+
 
 .button-container a {
   display: flex;
@@ -69,9 +85,10 @@ nav ul li a:hover {
   color: #333;
   margin: 0 10px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px; /* Bordures arrondies */
   border: 1px solid black;
   position: relative;
+  transition: transform 0.3s ease;
 }
 
 .button-container a:first-child::before {
@@ -100,40 +117,19 @@ nav ul li a:hover {
 
 .button-container a:hover {
   background-color: #eee;
+  transform: scale(1.1);
 }
+
 
 /*----------------- LE CALENDRIER /*-----------------*/
 body{
   margin: 0;
   padding: 0;
-}
-
-body.ete {
-  background-image: url("../static/ete2.jpg");
-  background-size: cover; /* Afficher l'image en plein écran */
-  background-repeat: no-repeat; /* Ne pas répéter l'image */
-  background-position: center; /* Centrer l'image */
-}
-
-body.hiver {
   background-image: url("../static/hiver1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-}
 
-body.printemps {
-  background-image: url("../static/printemps1.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-body.automne {
-  background-image: url("../static/automne1.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .container {
@@ -155,11 +151,14 @@ body.automne {
 }
 
 .contenu_jour {
-  padding: 10px 0 10px 0;
+  padding: 10px;
   border: 1px solid rgb(0, 0, 0);
-  height: 100%;
+  height: 45%;
   overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.658); /* Arrière-plan semi-transparent */
+  color: black; /* Couleur du texte */
 }
+
 .contenu_jour ul {
   list-style-type: none;
   padding: 0;
@@ -183,6 +182,7 @@ form {
   align-items: center;
   margin-top: 20px;
 }
+
 
 .newEventForm input[type="text"]:focus {
   outline: none;
