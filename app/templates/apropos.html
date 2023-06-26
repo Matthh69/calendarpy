@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/createCalendar.css">
+    <title>A Propos de calendarpy</title>
+  </head>
+  <body class="apropos-bg">
+    <header>
+      <h1><a href="/">calendarpy</a></h1>
+      <nav>
+        <ul>
+            <li><a href="{{ url_for('routes.apropos') }}">A Propos</a></li>
+      <li><a href="{{ url_for('routes.aide') }}">Aide</a></li>
+        </ul>
+    </nav>
+    </header>
+    
+    <div class="content center-content about-page">
+      <h2>A Propos de calendarpy</h2>
+          
+      <div class="photos-container">
+        <div class="photo">
+          <img src="../static/profil.png" alt="Photo de Matt">
+          <h3>Matthieu</h3>
+        </div>
+        <div class="photo">
+          <img src="../static/profil.PNG" alt="Photo de Bapp">
+          <h3>Baptiste</h3>
+        </div>
+        <div class="photo">
+          <img src="../static/profil.png" alt="Photo de Melll">
+          <h3>Melvynn</h3>
+        </div>
+        <div class="photo">
+          <img src="../static/profil.png" alt="Photo de Salll">
+          <h3>Salima</h3>
+        </div>
+      </div>
+      
+      <div class="info-container">
+        <div class="info-block">
+          <h3>Notre projet</h3>
+          <p>Nous sommes un groupe d'étudiants passionnés par le développement web. Notre projet, calendarpy, vise à fournir un outil de planification convivial pour les utilisateurs.</p>
+        </div>
+        
+        <div class="info-block">
+          <h3>Fonctionnalités</h3>
+          <p>Avec calendarpy, vous pouvez créer et gérer vos calendriers personnels, planifier des événements, ajouter des tâches et les partager facilement avec votre famille et vos amis.</p>
+        </div>
+        
+      </div>
+    </div>
+    
+    <footer>
+      <span>© 2023 CalendarPy. Tous droits réservés.</span>
+    </footer>
+    
+  </body>
+</html>

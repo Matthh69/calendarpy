@@ -229,3 +229,13 @@ def update_event():
     # Redirection vers la page du calendrier pour la semaine correspondant à la date de l'événement
     url = url_for('routes.calendar', date=date.strftime('%Y-%m-%d'), hash=hash)
     return redirect(url)
+
+
+@bp.route('/apropos')
+def apropos():
+    return render_template('apropos.html')
+
+
+@bp.route('/aide')
+def aide():
+    return render_template('aide.html')

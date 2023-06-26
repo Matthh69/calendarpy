@@ -1,4 +1,4 @@
-/* Reset some default browser styles */
+/* Réinitialisation des styles par défaut */
 body, h1, h2, h3, h4, h5, h6, p, ul, li {
   margin: 0;
   padding: 0;
@@ -6,8 +6,8 @@ body, h1, h2, h3, h4, h5, h6, p, ul, li {
 
 body {
   font-family: Baskerville, serif;
-  background: url("../static/calendar_background.png") repeat center center;
-  background-size: 550px;
+  background: url("../static/calenDD3.jpg") center fixed;
+  background-size: cover;
   overflow-x: hidden; /* Empêche l'apparition de la barre de défilement horizontale */
 }
 
@@ -49,10 +49,11 @@ nav ul li a:hover {
 
 .content {
   margin: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0); /* Fond transparent */
   padding: 20px;
   text-align: center;
 }
+
 
 footer {
   background-color: #333;
@@ -93,6 +94,23 @@ footer {
   background-color: #333;
   color: #fff;
   border-radius: 5px;
+  transition: all 0.3s ease; /* Ajout de la transition */
+}
+
+.create-button:hover {
+  transform: scale(1.05); /* Augmentation de la taille lors du survol */
+  background-color: #333; /* Couleur de fond frappante */
+  color: #fff; /* Couleur du texte */
+  cursor: pointer;
+}
+
+a {
+  color: black; /* Couleur du texte par défaut */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff; /* Couleur du texte lors du survol */
 }
 
 .info-container {
@@ -132,8 +150,110 @@ footer {
   font-size: 16px;
 }
 
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ... A Propos CSS ... */
+
+.about-page {
+  text-align: center;
+}
+
+.about-page h2 {
+  margin-bottom: 20px;
+}
+
+.about-page .participant-names {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.about-page .participant-names h3 {
+  font-family: Bradley Hand, serif;
+  font-size: 24px;
+  margin: 0 10px;
+}
+
+.about-page .photos-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.about-page .photo {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.about-page .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.about-page .info-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.about-page .info-block {
+  width: 400px;
+  margin: 20px;
+  padding: 20px;
+  background: linear-gradient(120deg, #f5f5dc, #fafad2);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about-page .info-block h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.about-page .info-block p {
+  font-size: 16px;
+}
 
 
+/* ... aide CSS ... */
+
+.aide-content {
+  margin: 20px;
+  text-align: center;
+}
+
+.aide-info-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.aide-info-block {
+  flex: 1;
+  padding: 20px;
+  margin: 20px;
+  background: linear-gradient(120deg, #f5f5dc, #fafad2);
+  color: black;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 1s ease forwards;
+}
 
 @keyframes fadeSlideIn {
   from {
@@ -144,4 +264,16 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ... arriere plan pour aide et apropos ... */
+
+.aide-bg {
+  background: url("../static/calenDD2.jpg") center fixed;
+  background-size: cover;
+}
+
+.apropos-bg {
+  background: url("../static/calenDD.jpg") center fixed;
+  background-size: cover;
 }

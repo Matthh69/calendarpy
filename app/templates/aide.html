@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/createCalendar.css">
+    <title>Aide</title>
+  </head>
+  <body class="aide-bg">
+    <header>
+      <h1><a href="/">calendarpy</a></h1>
+      <nav>
+        <ul>
+            <li><a href="{{ url_for('routes.apropos') }}">A Propos</a></li>
+      <li><a href="{{ url_for('routes.aide') }}">Aide</a></li>
+        </ul>
+    </nav>
+    </header>
+    
+    <div class="aide-content center-content">
+      <h2>Aide</h2>
+      
+      <div class="aide-info-container">
+        <div class="aide-info-block blue">
+          <h2>Création d'un nouveau calendrier</h2>
+        <p>
+          Pour créer un nouveau calendrier, il vous suffit d'aller sur la page d'acceuil,
+          puis cliquez sur le bouton "Créer" pour générer un nouveau calendrier.
+        </p>
+      </div>
+  
+        <div class="aide-info-block white">
+          <h2>Ajout d'événements</h2>
+        <p>
+          Vous pouvez ajouter des événements à votre calendrier, en sélectionnant la date appropriée, saisissez les détails de
+          l'événement dans le champ prévu à cet effet. Ensuite, cliquez sur "Entrée/Enter" pour enregistrer
+          l'événement.
+        </p>
+      </div>
+      </div>
+  
+      <div class="aide-info-container">
+        <div class="aide-info-block red">
+          <h2>Partage par e-mail</h2>
+        <p>
+          Pour partager votre calendrier par e-mail, saisissez l'adresse e-mail du destinataire dans le champ prévu à cet
+          effet. Ensuite, cliquez sur le bouton "Partager par E-mail" pour partager votre calendrier avec cette personne.
+        </p>
+      </div>
+      </div>
+    </div>
+    
+    <footer>
+      <span>© 2023 CalendarPy. Tous droits réservés.</span>
+    </footer>
+  </body>
+</html>
