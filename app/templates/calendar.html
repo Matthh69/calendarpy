@@ -20,6 +20,21 @@
         </nav>
     </header>
 
+    <div class="popupToggle">
+        <div class="popupArrow">▼</div>
+    </div>
+
+    <div class="afficherDetailsMois">
+        <div class="popupCalendar">
+            {% for month in months %}
+              <a class="monthPopup" href="/calendar/{{ current_year }}-{{ loop.index }}-04/{{ hash }}">
+                <div class="month-border">{{ month }}</div>
+              </a>
+            {% endfor %}
+        </div>
+
+    </div>
+
     <div class="button-container">
         <a href="{{ url_for('routes.previous_week', date=date) }}">Semaine précédente</a>
 
@@ -81,6 +96,11 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <script>
+            const afficherDetailsMois = document.querySelector('.afficherDetailsMois');
+            // Ajout de la classe "hidden" par défaut
+            afficherDetailsMois.classList.add('hidden');
+
+
             var textareas = document.querySelectorAll('.eventContent, .submitNewEvent');
             
             textareas.forEach(function(textarea) {
@@ -112,6 +132,12 @@
                 $text.css('height', $text[0].scrollHeight + 'px');
                 }
             }
+
+            const popupToggle = document.querySelector('.popupToggle');
+
+            popupToggle.addEventListener('click', () => {
+            afficherDetailsMois.classList.toggle('hidden');
+            });
 
         </script>
         

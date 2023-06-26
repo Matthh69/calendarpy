@@ -145,12 +145,19 @@ def calendar(date=None, hash=None):
     print('ID SESSION IS', idCalSession)
     print('HASH VERIFICATION IS GOOD', hash)
 
+    # Conversion des mois en lettres en utilisant strftime avec locale
+    months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+              'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+    current_month = months[date_obj.month - 1]
+
     calendar, events, monday = get_calendar_and_events(date_obj, idCalSession)
 
     current_year = date_obj.year
-    current_month = date_obj.strftime('%B')  # This will give month in letters
 
-    return render_template('calendar.html', events=events, calendar=calendar, monday=monday, date=monday.strftime('%Y-%m-%d'), id=idCalSession, current_locale=current_locale, current_year=current_year, current_month=current_month)
+    if (hash):
+        session['hash'] = hash
+
+    return render_template('calendar.html', events=events, calendar=calendar, monday=monday, date=monday.strftime('%Y-%m-%d'), id=idCalSession, current_locale=current_locale, current_year=current_year, current_month=current_month, months=months, hash=hash)
 
 
 @bp.route('/previous_week/<date>')

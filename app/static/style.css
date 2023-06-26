@@ -1,4 +1,8 @@
 /*----------------- LE HEADER /*-----------------*/
+button, textarea, a {
+  cursor: pointer;
+}
+
 header {
   background-color: rgb(51, 51, 51);
   color: white;
@@ -41,6 +45,10 @@ header nav ul li {
 header nav ul li a {
   text-decoration: none;
   color: white;
+}
+
+nav ul li a:hover {
+  color: #979797;
 }
 
 
@@ -99,6 +107,40 @@ body{
   margin: 0;
   padding: 0;
 }
+
+body.ete {
+  background-image: url("../static/ete2.jpg");
+  background-size: cover; /* Afficher l'image en plein écran */
+  background-repeat: no-repeat; /* Ne pas répéter l'image */
+  background-position: center; /* Centrer l'image */
+}
+
+body.hiver {
+  background-image: url("../static/hiver1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body.printemps {
+  background-image: url("../static/printemps1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body.automne {
+  background-image: url("../static/automne1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
 .semaine {
   display: flex;
   /*border: 2px solid black;*/
@@ -221,3 +263,59 @@ footer {
   background: linear-gradient(90deg, rgb(245, 245, 245), rgb(249, 249, 249));
 }
 
+/* AFFICHER LES MOIS */
+
+.popupCalendar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.show  {
+  display: none;
+}
+
+.monthPopup {
+  flex-basis: 24%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 2px solid rgb(202, 202, 202);
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: #f0f0f0;
+  color: #000;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+
+.monthPopup:hover {
+  background-color: #e0e0e0;
+}
+
+
+.monthPopup:hover {
+  background-color: #e0e0e0;
+}
+
+.popupToggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.popupArrow {
+  
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.hidden{
+  display: none;
+}
+
+.afficherDetailsMois{
+
+}
