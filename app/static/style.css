@@ -122,7 +122,7 @@ nav ul li a:hover {
 
 
 /*----------------- LE CALENDRIER /*-----------------*/
-body{
+/*body{
   margin: 0;
   padding: 0;
   background-image: url("../static/hiver1.jpg");
@@ -130,7 +130,42 @@ body{
   background-repeat: no-repeat;
   background-position: center;
 
+}*/
+
+body{
+  font-family: "Courier New", monospace;
+  margin: 0;
+  padding: 0;
 }
+
+body.ete {
+  background-image: url("../static/ete2.jpg");
+  background-size: cover; /* Afficher l'image en plein écran */
+  background-repeat: no-repeat; /* Ne pas répéter l'image */
+  background-position: center; /* Centrer l'image */
+}
+
+body.hiver {
+  background-image: url("../static/hiver1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body.printemps {
+  background-image: url("../static/printemps1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body.automne {
+  background-image: url("../static/automne1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 
 .container {
   position: relative;
@@ -153,7 +188,7 @@ body{
 .contenu_jour {
   padding: 10px;
   border: 1px solid rgb(0, 0, 0);
-  height: 45%;
+  height: 95%;
   overflow-y: auto;
   background-color: rgba(255, 255, 255, 0.658); /* Arrière-plan semi-transparent */
   color: black; /* Couleur du texte */
@@ -292,7 +327,7 @@ footer {
 
 
 .monthPopup:hover {
-  background-color: #e0e0e0;
+  background-color: #ffffff;
 }
 
 

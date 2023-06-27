@@ -157,7 +157,18 @@ def calendar(date=None, hash=None):
     if (hash):
         session['hash'] = hash
 
-    return render_template('calendar.html', events=events, calendar=calendar, monday=monday, date=monday.strftime('%Y-%m-%d'), id=idCalSession, current_locale=current_locale, current_year=current_year, current_month=current_month, months=months, hash=hash)
+    month_number = date_obj.month
+    background_class = ''
+    if month_number in [12, 1, 2]:
+        background_class = 'hiver'
+    elif month_number in [3, 4, 5]:
+        background_class = 'printemps'
+    elif month_number in [6, 7, 8]:
+        background_class = 'ete'
+    elif month_number in [9, 10, 11]:
+        background_class = 'automne'
+
+    return render_template('calendar.html', events=events, calendar=calendar, monday=monday, date=monday.strftime('%Y-%m-%d'), id=idCalSession, current_locale=current_locale, current_year=current_year, current_month=current_month, months=months, hash=hash, background_class=background_class)
 
 
 @bp.route('/previous_week/<date>')
