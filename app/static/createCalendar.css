@@ -5,7 +5,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul, li {
 }
 
 body {
-  font-family: Baskerville, serif;
+  font-family: "Courier New", monospace;
   background: url("../static/calenDD3.jpg") center fixed;
   background-size: cover;
   overflow-x: hidden; /* Empêche l'apparition de la barre de défilement horizontale */
@@ -214,7 +214,7 @@ a:hover {
   width: 400px;
   margin: 20px;
   padding: 20px;
-  background: linear-gradient(120deg, #f5f5dc, #fafad2);
+  background-color: #edecdf;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -242,11 +242,12 @@ a:hover {
   margin-top: 20px;
 }
 
+
 .aide-info-block {
   flex: 1;
   padding: 20px;
   margin: 20px;
-  background: linear-gradient(120deg, #f5f5dc, #fafad2);
+  background: #edecdf;
   color: black;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -269,7 +270,7 @@ a:hover {
 /* ... arriere plan pour aide et apropos ... */
 
 .aide-bg {
-  background: url("../static/calenDD2.jpg") center fixed;
+  background: url("../static/calenDD1.jpg") center fixed;
   background-size: cover;
 }
 
