@@ -82,7 +82,7 @@ INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-06-26 13:01:35
 --Tuesday 27
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-06-27 09:12:30', 'Bonjour, aujourd''hui nous allons travailler sur la présentation et le powerpoint tjrs à 13h en L490', 4);
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-06-27 10:16:30', 'Oui d''accord il faut penser a mettre en partage le pptx', 4);
-INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-06-27 18:49:30', 'J''ai eu un soucis de PC quelqu''un peut il m''le pptx ?', 4);
+INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-06-27 18:49:30', 'J''ai eu un soucis de PC quelqu''un peut il m''envoyer le pptx ?', 4);
 
 --Wednesday 28
 INSERT INTO event (event_date, txt_content, id_cal) VALUES ('2023-06-28 09:12:30', 'L321 pour ajourd''hui tjrs à 13h', 4);
