@@ -41,10 +41,12 @@ def calculate_idCal(hash):
     for idTest in range(int(resultat[0])+5):
         print(idTest)
         hash_value = calculate_hash(idTest)
+        print("id: ", idTest, " hash de l'id: ", hash_value)
         if hash == hash_value:
-            if idCalSession == None:
-                session['idCal'] = idTest
-                session['hash'] = hash_value
+            print("hash == hash_value:")
+
+            session['idCal'] = idTest
+            session['hash'] = hash_value
             break
         idTest += 1
     else:  # la boucle for a été terminée sans trouver d'id_cal correspondant
@@ -128,11 +130,10 @@ def calendar(date=None, hash=None):
     else:
         date_obj = datetime.strptime(date, '%Y-%m-%d')
 
-    idCalSession = session.get('idCal')
-
     FindId = calculate_idCal(hash)
     if FindId == True:  # Si True alors id vient d'être défini dans la session
         idCalSession = session.get('idCal')
+        print("id trouvé")
     elif FindId == False:  # Si false ca veut dire que le hash calculé avec tous les id_cal n'as jamais donné le hash affiché donc on affiche pas le calendrier
         return render_template('error.html')
 
@@ -141,6 +142,8 @@ def calendar(date=None, hash=None):
 
     # Récupérer la localisation en cours
     current_locale = locale.getlocale()
+
+    idCalSession = session.get('idCal')
 
     print('ID SESSION IS', idCalSession)
     print('HASH VERIFICATION IS GOOD', hash)
