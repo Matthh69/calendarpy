@@ -13,6 +13,7 @@ import hashlib
 
 # Création d'un Blueprint pour les routes
 bp = Blueprint('routes', __name__)
+# modification
 
 
 def getId():
@@ -100,6 +101,7 @@ def get_calendar_and_events(date, id=None):
 
     # Génération du calendrier
     calendar = [{'day': day, 'date': date} for day, date in zip(days, dates)]
+    print(calendar[0]['date'].strftime('%B'))
 
     # Connexion à la base de données
     conn = db.get_db()
@@ -138,7 +140,7 @@ def calendar(date=None, hash=None):
         return render_template('error.html')
 
     # Définir la localisation en français
-    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+    locale.setlocale(locale.LC_TIME, 'fr_FR')
 
     # Récupérer la localisation en cours
     current_locale = locale.getlocale()
